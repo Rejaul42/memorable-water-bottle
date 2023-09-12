@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import Bottle from '../Bottle/bottle';
 import './Bottles.css'
+import { addToLS } from '../../Utilities/Localstorage';
 
 const Bottles = () => {
     const [bottles, setBottles] = useState([]);
@@ -10,9 +11,10 @@ const Bottles = () => {
             .then(res => res.json())
             .then(data => setBottles(data))
     }, []);
-    const handelCart =(bottle)=>{
+    const handelCart = bottle => {
         const newCart = [...cart, bottle];
         setCart(newCart);
+        addToLS(bottle.id);
     }
     return (
         <div>
@@ -24,7 +26,7 @@ const Bottles = () => {
                     bottles.map(bottle => <Bottle
                         key={bottle.id}
                         bottle={bottle}
-                        handelCart= {handelCart}
+                        handelCart={handelCart}
                     ></Bottle>)
                 }
             </div>

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import './Bottle.css'
 const Bottle = ({bottle, handelCart}) => {
     const {name, img, price} = bottle;
@@ -10,5 +11,9 @@ const Bottle = ({bottle, handelCart}) => {
         </div>
     );
 };
+Bottle.propTypes={
+    bottle: PropTypes.object.isRequired,
+    handelCart: PropTypes.func.isRequired
+}
 
 export default Bottle;
